@@ -21,18 +21,25 @@
                         <f:param value="#{cc.attrs.entity.id}" name="categoryId"/>
                     </h:link>
                 </div>
+                <div id="categoryItemButtons" class="d-inline-flex justify-content-between w-100">
 
-                <h:form>
-                    <h:commandButton action="#{categoryRemoveController.removeEntity()}"
-                                     id="removeBtn"
-                                     value="Delete"
-                                     type="submit">
-                        <f:param name="categoryId" value="#{cc.attrs.entity.id}"/>
+                    <h:commandButton action="category-edit"
+                                     value="Edit"
+                                     styleClass="bg-info border-0 border-radius">
                         <f:setPropertyActionListener
-                                target="#{categoryRemoveController.removingEntity}"
-                                                     value="#{cc.attrs.entity}" for="removeBtn"/>
+                                value="#{cc.attrs.entity}"
+                                target="#{categoryEditController.oldEntityValue}"/>
                     </h:commandButton>
-                </h:form>
+                    <h:commandButton action="#{categoryRemoveController.removeEntity()}"
+                                                       id="removeBtn"
+                                                       value="Delete" type="submit"
+                                                       styleClass="bg-danger border-radius" style="border:none">
+                    <f:setPropertyActionListener
+                            target="#{categoryRemoveController.removingEntity}"
+                            value="#{cc.attrs.entity}" for="removeBtn"/>
+                </h:commandButton>
+                </div>
+
 
             </div>
     </composite:implementation>

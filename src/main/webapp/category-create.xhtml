@@ -27,13 +27,24 @@
 
 <ui:composition template="jsf/templates/create_template.xhtml">
     <ui:define name="create-form-inner">
-        <h:outputLabel for="category_name_input" id="category_name_label" value="Category name">
-            <h:inputText id="category_name_input" required="true" maxlength="50" value="#{categoryController.name}">
-                <f:validateLength for="category_name_input" maximum="50" minimum="2"/>
-                <f:validateRegex  for="category_name_input" pattern="[\w\dа-яА-Я -]+"/>
+        <h:outputLabel for="category_name_input"
+                       id="category_name_label"
+                       value="Category name">
+
+            <h:inputText id="category_name_input"
+                         required="true"
+                         maxlength="50"
+                         value="#{categoryCreateController.createEntity.name}">
+                <f:validateLength for="category_name_input"
+                                  maximum="50" minimum="2"/>
+                <f:validateRegex  for="category_name_input"
+                                  pattern="[\w\dа-яА-Я -]+"/>
             </h:inputText>
+
         </h:outputLabel>
-        <h:commandButton value="create" id="create-button" action="#{categoryController.create()}"/>
+        <h:commandButton value="create"
+                         id="create-button"
+                         action="#{categoryCreateController.create()}"/>
     </ui:define>
     <ui:define name="title">
         #{messages['title.category.create']}

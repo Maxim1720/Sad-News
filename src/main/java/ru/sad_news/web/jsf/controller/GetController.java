@@ -6,13 +6,14 @@ import lombok.Setter;
 import ru.sad_news.service.facade.Facade;
 import ru.sad_news.service.util.RangeResult;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Getter
 @Setter
-public abstract class GetController<E, ID>{
+public abstract class GetController<E, ID> implements Serializable {
 
     private Facade<E, ID> facade;
     private ID searchId;

@@ -6,9 +6,7 @@ import jakarta.inject.Named;
 @RequestScoped
 @Named
 public class Converter {
-
     public Long toLong(String id){
         return Long.parseLong(id);
     }
-
 }

@@ -9,18 +9,26 @@
 
 <ui:composition template="jsf/templates/templLayout.xhtml">
         <ui:define name="content">
+
             <f:metadata>
                 <f:viewAction action="#{categoryGetController.findAll()}"/>
             </f:metadata>
 
-        <div id="categories">
-                <ui:repeat value="#{categoryGetController.all}" var="c">
-                    <category:priview entity="#{c}" rendered="#{c!=null}"/>
-                </ui:repeat>
-            <!--<category:priview entity="#{categoryGetController.all.get(0)}"
-                              rendered="#{not empty categoryGetController.all}"/>-->
-            <h:button value="Create new"
-                      outcome="#{categoryGetController.moveToCreate()}"/>
+        <div id="categories" class="h-100 border border-danger min-vh-100">
+            <h:form id="categories-form" styleClass="h-100 border border-primary min-vh-100">
+
+                <div class="border-bottom border-dark border-2 pb-4 mb-2">
+                    <ui:repeat value="#{categoryGetController.all}" var="c"
+                               offset="0" size="#{categoryGetController.all.size()}">
+                        <div class="d-inline-flex flex-wrap h-25">
+                            <category:priview entity="#{c}" rendered="#{c!=null}"/>
+                        </div>
+                    </ui:repeat>
+                </div>
+                <h:button value="Create new"
+                          styleClass="d-block"
+                          outcome="#{categoryGetController.moveToCreate()}"/>
+            </h:form>
         </div>
 
         </ui:define>

@@ -9,6 +9,10 @@
     width: 20px;
 }
 
+.border-radius{
+    border-radius: 5px;
+}
+
 /*
 #content{
     width: 100%;

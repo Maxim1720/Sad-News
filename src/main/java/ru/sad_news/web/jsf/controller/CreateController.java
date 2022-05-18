@@ -5,9 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.service.facade.Facade;
 
+import java.io.Serializable;
+
 
 @Getter@Setter
-public abstract class CreateController<E, ID> implements Creatable {
+public abstract class CreateController<E, ID> implements Creatable, Serializable {
 
     private final Facade<E, ID> facade;
     private E createEntity;

@@ -5,11 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.service.facade.Facade;
 
+import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @Getter@Setter
-public abstract class RemoveController<E,ID> {
+public abstract class RemoveController<E,ID> implements Serializable {
 
     private final Facade<E,ID> facade;
     protected ID removingEntityId;

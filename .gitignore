@@ -83,3 +83,4 @@
 /target/sad-news-1.0/WEB-INF/classes/ru/sad_news/service/crud/updater/user/info/UserInfoUpdater.class
 /.idea/vcs.xml
 /target/sad-news-1.0/WEB-INF/web.xml
+/target/
