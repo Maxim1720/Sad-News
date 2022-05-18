@@ -1,17 +1,20 @@
 package ru.sad_news.web.resource.article;
 
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
+import jakarta.inject.Named;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import ru.sad_news.entity.article.Article;
 import ru.sad_news.service.util.RangeResult;
 import ru.sad_news.web.resource.Resource;
-import ru.sad_news.service.ejb.article.ArticleFacade;
-import ru.sad_news.service.ejb.article.ArticleFacadeImpl;
+import ru.sad_news.service.facade.article.ArticleFacade;
+import ru.sad_news.service.facade.article.ArticleFacadeImpl;
 
 import java.net.URI;
 
-
+@Named
+@RequestScoped
 @Path("/article/")
 public class ArticleResource extends Resource<Article, Long> implements IArticleResourceFinder {
 

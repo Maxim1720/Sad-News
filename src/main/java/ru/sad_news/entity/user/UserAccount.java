@@ -1,6 +1,9 @@
 package ru.sad_news.entity.user;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.entity.article.Article;
@@ -20,20 +23,34 @@ public class UserAccount implements Serializable {
     @Column(name = "user_account_id", nullable = false)
     private Long id;
 
-    @Column(nullable = false, unique = true, updatable = false)
+
+    @Column(nullable = false, unique = true, updatable = false, length = 20)
     private String login;
 
-    @Column(nullable = false)
+
+    @Column(nullable = false, length = 120)
     private String password;
 
-    @ManyToOne(cascade = {CascadeType.ALL})
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_info_id", nullable = false)
-    private UserInfo info;
+    private UserInfo info = new UserInfo();
+
+    @OneToMany(mappedBy = "userAccount",
+            cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    private List<SavedArticle> savedArticles;
 
     @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<SavedArticle> savedArticles = new ArrayList<>();
+    private List<Article> articles;
 
-    @OneToMany(mappedBy = "userAccount", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Article> articles = new ArrayList<>();
+    @JsonbTransient
+    public List<SavedArticle> getSavedArticles() {
+        return savedArticles;
+    }
+
+    @JsonbTransient
+    public List<Article> getArticles() {
+        return articles;
+    }
 
 }

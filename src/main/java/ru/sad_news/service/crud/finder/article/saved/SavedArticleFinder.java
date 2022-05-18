@@ -1,12 +1,13 @@
 package ru.sad_news.service.crud.finder.article.saved;
 
+import ru.sad_news.entity.savedArticle.SavedArticlePK;
 import ru.sad_news.service.util.RangeResult;
 import ru.sad_news.entity.savedArticle.SavedArticle;
 import ru.sad_news.service.crud.finder.Finder;
 
 import java.util.List;
 
-public class SavedArticleFinder extends Finder<SavedArticle> implements ISavedArticleFinder<SavedArticle>{
+public class SavedArticleFinder extends Finder<SavedArticle, SavedArticlePK> implements ISavedArticleFinder<SavedArticle>{
     
     @Override
     protected Class<SavedArticle> getEntityClass() {

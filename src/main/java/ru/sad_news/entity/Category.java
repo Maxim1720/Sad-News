@@ -1,5 +1,6 @@
 package ru.sad_news.entity;
 
+import jakarta.json.bind.annotation.JsonbTransient;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -21,4 +22,9 @@ public class Category implements Serializable {
 
     @OneToMany(targetEntity = Rubric.class, cascade = {CascadeType.ALL}, mappedBy = "category")
     private Set<Rubric> rubrics;
+
+    @JsonbTransient
+    public Set<Rubric> getRubrics() {
+        return rubrics;
+    }
 }

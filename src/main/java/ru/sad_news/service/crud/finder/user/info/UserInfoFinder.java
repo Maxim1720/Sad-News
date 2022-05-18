@@ -8,7 +8,7 @@ import ru.sad_news.service.crud.finder.Finder;
 import java.util.List;
 
 @ApplicationScoped
-public class UserInfoFinder extends Finder<UserInfo> {
+public class UserInfoFinder extends Finder<UserInfo, Long> {
 
     @Override
     protected Class<UserInfo> getEntityClass() {

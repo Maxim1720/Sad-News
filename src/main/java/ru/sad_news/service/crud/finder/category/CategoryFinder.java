@@ -4,7 +4,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import ru.sad_news.entity.Category;
 import ru.sad_news.service.crud.finder.Finder;
 @ApplicationScoped
-public class CategoryFinder extends Finder<Category> {
+public class CategoryFinder extends Finder<Category, Long> {
 
     @Override
     protected Class<Category> getEntityClass() {

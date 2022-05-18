@@ -1,5 +1,6 @@
 package ru.sad_news.web.resource.article;
 
+import jakarta.faces.bean.ManagedBean;
 import jakarta.ws.rs.core.Response;
 
 public interface IArticleResourceFinder {

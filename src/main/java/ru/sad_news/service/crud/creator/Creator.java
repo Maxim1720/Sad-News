@@ -3,7 +3,7 @@ package ru.sad_news.service.crud.creator;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-public abstract class Creator<E> {
+public abstract class Creator<E> implements Creatable<E>{
     @PersistenceContext(unitName = "news_portal")
     private EntityManager em;
 

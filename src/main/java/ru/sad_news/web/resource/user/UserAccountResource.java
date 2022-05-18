@@ -1,9 +1,9 @@
 package ru.sad_news.web.resource.user;
 
 import ru.sad_news.entity.user.UserAccount;
-import ru.sad_news.service.ejb.user.account.UserAccountFacadeImpl;
+import ru.sad_news.service.facade.user.account.UserAccountFacadeImpl;
 import ru.sad_news.service.util.RangeResult;
-import ru.sad_news.service.ejb.user.account.UserAccountFacade;
+import ru.sad_news.service.facade.user.account.UserAccountFacade;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;

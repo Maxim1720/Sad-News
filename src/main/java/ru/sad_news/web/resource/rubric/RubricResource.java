@@ -1,13 +1,13 @@
 package ru.sad_news.web.resource.rubric;
 
 import ru.sad_news.entity.Rubric;
-import ru.sad_news.service.ejb.category.CategoryFacade;
+import ru.sad_news.service.facade.category.CategoryFacade;
 import ru.sad_news.service.util.RangeResult;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 import ru.sad_news.web.resource.Resource;
-import ru.sad_news.service.ejb.rubric.RubricFacade;
+import ru.sad_news.service.facade.rubric.RubricFacade;
 
 @Path("/rubrics/")
 public class RubricResource extends Resource<Rubric, Long> {

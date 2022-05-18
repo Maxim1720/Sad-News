@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: almat
+  Date: 28.04.2022
+  Time: 19:10
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+
+    <ui:composition template="templLayout.xhtml">
+        <ui:define name="head">
+            <ui:insert name="head"/>
+        </ui:define>
+        <ui:define name="content">
+            <div class="border-danger border d-block container-fluid min-vh-100">
+
+                <h:form id="create-form" title="create form"
+                        styleClass="min-vh-100
+                        w-100
+                        justify-content-evenly align-items-center
+                        border-primary border
+                        d-block
+                        container-fluid">
+
+                    <ui:insert name="create-form-inner">
+                    </ui:insert>
+                </h:form>
+            </div>
+        </ui:define>
+    </ui:composition>
+</html>

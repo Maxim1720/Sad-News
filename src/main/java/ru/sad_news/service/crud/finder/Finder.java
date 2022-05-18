@@ -8,7 +8,7 @@ import ru.sad_news.service.util.RangeResult;
 
 import java.util.List;
 
-public abstract class Finder<E> {
+public abstract class Finder<E,ID> implements Findable<E,ID>{
 
     @PersistenceContext(unitName = "news_portal")
     private EntityManager em;
@@ -20,7 +20,7 @@ public abstract class Finder<E> {
 
     protected abstract Class<E> getEntityClass();
 
-    public E findById(Object id){
+    public E findByID(ID id){
         return getEntityManager().find(getEntityClass(), id);
     }
 

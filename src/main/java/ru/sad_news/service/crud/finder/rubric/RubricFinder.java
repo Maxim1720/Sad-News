@@ -3,14 +3,13 @@ package ru.sad_news.service.crud.finder.rubric;
 import jakarta.enterprise.context.ApplicationScoped;
 import ru.sad_news.entity.Category;
 import ru.sad_news.entity.Rubric;
-import ru.sad_news.service.operations.rubric.IRubricFinder;
 import ru.sad_news.service.util.RangeResult;
 import ru.sad_news.service.crud.finder.Finder;
 
 import java.util.List;
 
 @ApplicationScoped
-public class RubricFinder extends Finder<Rubric> implements IRubricFinder<Rubric> {
+public class RubricFinder extends Finder<Rubric,Long> implements IRubricFinder<Rubric> {
 
     @Override
     protected Class<Rubric> getEntityClass() {

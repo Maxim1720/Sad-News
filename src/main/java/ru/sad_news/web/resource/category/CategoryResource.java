@@ -1,7 +1,7 @@
 package ru.sad_news.web.resource.category;
 
 import ru.sad_news.entity.Category;
-import ru.sad_news.service.ejb.category.CategoryFacade;
+import ru.sad_news.service.facade.category.CategoryFacade;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;

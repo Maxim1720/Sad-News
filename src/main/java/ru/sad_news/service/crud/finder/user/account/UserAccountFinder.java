@@ -3,7 +3,6 @@ package ru.sad_news.service.crud.finder.user.account;
 import jakarta.enterprise.context.ApplicationScoped;
 import ru.sad_news.entity.user.UserAccount;
 import ru.sad_news.entity.user.UserInfo;
-import ru.sad_news.service.operations.user.IUserAccountFinder;
 import ru.sad_news.service.util.RangeResult;
 import ru.sad_news.service.crud.finder.Finder;
 import ru.sad_news.service.crud.finder.user.info.UserInfoFinder;
@@ -13,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @ApplicationScoped
-public class UserAccountFinder extends Finder<UserAccount> implements IUserAccountFinder {
+public class UserAccountFinder extends Finder<UserAccount, Long> implements IUserAccountFinder {
 
 
     @Inject
@@ -25,7 +24,7 @@ public class UserAccountFinder extends Finder<UserAccount> implements IUserAccou
     }
     @Override
     public UserAccount findByLogin(String login){
-        return findBy("login", login);
+        return (UserAccount) getfindAllQuery(new String[]{"login"},login).getSingleResult();//findBy("login", login);
     }
 
 

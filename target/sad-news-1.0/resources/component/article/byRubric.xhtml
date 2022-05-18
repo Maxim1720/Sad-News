@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core" xmlns:composite="http://java.sun.com/jsf/composite"
+      xmlns:article="http://java.sun.com/jsf/composite/component/article">
+<f:view>
+
+   <!--<f:metadata>
+      <f:viewParam name="rubricId" value="#{rubricGetController.searchId}"/>
+      <f:viewAction action="#{articleGetController.findAllByRubricId(utils.fromString(param.rubricId))}"/>
+   </f:metadata>-->
+
+   <composite:interface>
+      <composite:attribute name="rubric" required="true" type="ru.sad_news.entity.Rubric"/>
+   </composite:interface>
+
+   <composite:implementation>
+      <ui:repeat value="#{cc.attrs.rubric.articles}" var="a">
+         <article:preview articleObj="#{a}"/>
+      </ui:repeat>
+   </composite:implementation>
+
+</f:view>
+</html>

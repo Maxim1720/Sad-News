@@ -1,11 +1,16 @@
 package ru.sad_news.entity;
 
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbTransient;
+import jakarta.json.bind.annotation.JsonbVisibility;
+import jakarta.json.bind.config.PropertyVisibilityStrategy;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.entity.article.Article;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -23,8 +28,14 @@ public class Rubric implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "category_id", updatable = false, nullable = false)
-    private Category category;
+    private Category category = new Category();
 
-    @OneToMany(cascade = CascadeType.REMOVE, mappedBy = "rubric")
-    private List<Article> articles;
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "rubric")
+    private List<Article> articles = new ArrayList<>();
+
+    @JsonbTransient
+    public List<Article> getArticles() {
+        return articles;
+    }
 }

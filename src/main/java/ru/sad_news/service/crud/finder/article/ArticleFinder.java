@@ -7,12 +7,11 @@ import ru.sad_news.service.util.RangeResult;
 import ru.sad_news.service.crud.finder.Finder;
 import jakarta.inject.Inject;
 import jakarta.persistence.Query;
-import ru.sad_news.service.operations.article.IArticleFinder;
 
 import java.util.*;
 
 
-public class ArticleFinder extends Finder<Article> implements IArticleFinder<Article> {
+public class ArticleFinder extends Finder<Article,Long> implements ArticleFindable<Article> {
 
     @Inject
     SavedArticleFinder savedArticleFinder;

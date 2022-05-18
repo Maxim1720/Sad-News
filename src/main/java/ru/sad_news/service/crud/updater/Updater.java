@@ -3,7 +3,7 @@ package ru.sad_news.service.crud.updater;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-public abstract class Updater<E, ID> {
+public abstract class Updater<E, ID> implements Updatable<E,ID>{
 
     public Updater(Class<E> eClass){
         this.entityClass = eClass;

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<ui:composition template="jsf/templates/templLayout.xhtml">
+    <ui:define name="content">
+        <h:head>
+            <h:outputStylesheet library="css" name="/bootstrap-5.0.2-dist/css/bootstrap.css" />
+            <meta http-equiv="Content-Type" content="text/html;charset=UTF-8;"/>
+            <title>#{messages['title.user.create']}</title>
+        </h:head>
+        <div id="reg">
+            <h:form styleClass="regForm" id="reg-form">
+                <div class="d-block ms-auto me-auto
+                        container p-2  ">
+                    <div class="w-50 ms-auto me-auto panel bg-gradient">
+                        <div class="w-50 ms-auto me-auto">
+                            <ui:include src="jsf/templates/user/authInput.xhtml"/>
+<!--                            <ui:include src="../templates/user/user-data-validation.xhtml"/>-->
+                        </div>
+
+                        <ui:include src="jsf/templates/user/infoInput.xhtml"/>
+                        <h:commandButton value="Sign up"
+                                         id="signup_btn"
+                                         styleClass="btn-primary btn me-0 ms-auto d-block"
+                                         action="#{userAccountController.createUserAccount()}">
+
+                        </h:commandButton>
+                    </div>
+                </div>
+            </h:form>
+        </div>
+    </ui:define>
+</ui:composition>
+</html>

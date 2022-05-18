@@ -1,0 +1,5 @@
+#shower-item{
+    display: flex;
+    justify-content: space-around;
+    background-color: orange;
+}

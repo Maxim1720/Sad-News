@@ -4,7 +4,7 @@ package ru.sad_news.web.resource;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-import ru.sad_news.service.IFacade;
+import ru.sad_news.service.facade.IFacade;
 import ru.sad_news.service.util.RangeResult;
 
 import java.net.URI;

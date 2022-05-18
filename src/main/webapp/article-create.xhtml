@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Created by IntelliJ IDEA.
+  User: almat
+  Date: 01.05.2022
+  Time: 18:52
+-->
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+<ui:composition template="jsf/templates/templLayout.xhtml">
+
+
+    <ui:define name="content">
+        <h:head>
+            <title>#{messages['title.article.create']}</title>
+            <h:outputStylesheet library="css" name="/article/article.css"/>
+        </h:head>
+        <div>
+            <h:form styleClass="bg-gradient bg-dark p-2" enctype="multipart/form-data">
+                <div id="article-text" class="input-group-lg mb-3 p-2">
+                    <h:inputTextarea id="article-title-textarea"
+                                     value="#{articleCreateController.createEntity.text.title}"
+                                     styleClass="form-control-sm article-textarea text-primary" required="true"
+                    requiredMessage="Title is empty">
+                        <h:outputLabel value="#{fields['article.text.title']}" styleClass="form-label article-label"/>
+                        <f:validateBean/>
+                    </h:inputTextarea>
+                    <h:inputTextarea id="article-lead-textarea"
+                                     value="#{articleCreateController.createEntity.text.lead}" styleClass="article-textarea form-control-lg">
+                        <h:outputLabel value="#{fields['article.text.lead']}" styleClass="form-label article-label"/>
+                        <f:validateBean/>
+                    </h:inputTextarea>
+                    <h:inputTextarea id="article-maxinText-textarea"
+                                     value="#{articleCreateController.createEntity.text.mainText}" styleClass="article-textarea form-control-lg">
+                        <h:outputLabel value="#{fields['article.text.main-text']}" styleClass="form-label article-label"/>
+                        <f:validateBean/>
+                    </h:inputTextarea>
+                    <h:inputTextarea id="article-conclusion-textarea"
+                                     value="#{articleCreateController.createEntity.text.conclusion}" styleClass="article-textarea form-control-lg">
+                        <h:outputLabel value="#{fields['article.text.conclusion']}" styleClass="form-label article-label"/>
+                        <f:validateBean/>
+                    </h:inputTextarea>
+                </div>
+                <div class="article-input-box input-group-lg p-1">
+                    <h:selectOneMenu value="#{articleCreateController.createEntity.rubric.id}" styleClass="article-rel">
+                        <h:outputLabel value="#{fields['article.rubric']}"/>
+                        <f:selectItems value="#{rubricController.findAll()}"
+                                       var="rubric"
+                                       itemLabel="#{rubric.name}"
+                                       itemValue="#{rubric.id}"/>
+                    </h:selectOneMenu>
+                    <h:selectOneMenu value="#{articleCreateController.createEntity.userAccount.id}" styleClass="article-rel">
+                        <h:outputLabel value="#{fields['article.author']}"/>
+                        <f:selectItems value="#{userAccountController.findAll()}"
+                                       var="user"
+                                       itemLabel="#{user.login}"
+                                       itemValue="#{user.id}"/>
+                    </h:selectOneMenu>
+                </div>
+                <div id="article-imgs-upload" class="article-input-box p-1 mt-2 d-block">
+                    <h:outputLabel value="#{fields['article.imgs']}" styleClass="article-label form-label d-block"/>
+                    <!--<h:inputFile a:multiple="true" value="#{articleController.imgs}">
+        &lt;!&ndash;                <f:ajax listener="#{articleController.setImgs()}"/>&ndash;&gt;
+                    </h:inputFile>-->
+                </div>
+                <h:commandButton title="create article"
+                                 value="create"
+                                 id="article-create-btn"
+                                 styleClass="btn btn-primary mt-2"
+                                 action="#{articleCreateController.create()}"/>
+
+
+            </h:form>
+            <h:outputText value="Success!"
+                          id="success"
+                          styleClass="text-success fs-4 me-0 ms-auto"
+                          rendered="#{articleCreateController.createEntity.id != null}"/>
+            <h:messages errorClass="text-danger fs-3"/>
+        </div>
+
+    </ui:define>
+</ui:composition>
+
+<!--
+
+
+<h:body>
+
+    <ui:include src="../../templates/base-components/header.xhtml"/>
+
+
+
+    <ui:include src="../../templates/base-components/footer.xhtml"/>
+
+</h:body>
+-->
+</html>
