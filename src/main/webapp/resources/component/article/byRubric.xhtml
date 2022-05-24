@@ -20,23 +20,20 @@
    <composite:implementation>
 
       <h:form>
-      <h:panelGroup layout="block" id="articles">
-         <ui:repeat value="#{articleGetController.findAllByRubricId(cc.attrs.rubric.id)}" var="a">
-
-            <h:panelGroup layout="block" styleClass="border">
-
+         <h:panelGroup layout="block" id="articles" styleClass="d-inline-flex flex-wrap">
+            <ui:repeat value="#{articleGetController.findAllByRubricId(cc.attrs.rubric.id)}" var="a">
+               <h:panelGroup styleClass="border">
                   <article:preview articleObj="#{a}"/>
                   <h:commandButton value="remove" action="#{articleRemoveController.removeEntity()}"
                                    styleClass="d-block">
                      <f:setPropertyActionListener value="#{a}" target="#{articleRemoveController.removingEntity}"/>
                      <f:param value="#{param.get('rubricId')}" name="rubricId"/>
                   </h:commandButton>
+               </h:panelGroup>
+            </ui:repeat>
+         </h:panelGroup>
 
-            </h:panelGroup>
-         </ui:repeat>
-      </h:panelGroup>
-
-      <h:panelGroup layout="block">
+      <h:panelGroup layout="block" styleClass="d-block">
          <h:form>
             <h:commandButton value="Create" action="#{articleGetController.moveToCreate()}">
                <f:setPropertyActionListener value="#{param.rubricId}"

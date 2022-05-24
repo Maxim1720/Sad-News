@@ -13,21 +13,21 @@
 
     <composite:implementation>
 
-        <div class="d-inline-flex">
-            <div class="container ms-2 me-2 border item-bg border-dark">
-                <div>
-                    <h3>
-                        <h:link outcome="#{articleController.moveToArticle()}"
-                                styleClass="text-decoration-none text-orange" value=" #{cc.attrs.articleObj.text.title}">
-                            <f:param value="#{cc.attrs.articleObj.id}" name="articleId"/>
-                        </h:link>
-                    </h3>
+            <h:panelGroup layout="block" styleClass="d-inline-flex overflow-hidden" style="width: 250px;">
+                <div class="container ms-2 me-2 border item-bg border-dark">
+                    <div>
+                        <h4>
+                            <h:link outcome="#{articleController.moveToArticle()}"
+                                    styleClass="text-decoration-none text-orange" value=" #{cc.attrs.articleObj.text.title}">
+                                <f:param value="#{cc.attrs.articleObj.id}" name="articleId"/>
+                            </h:link>
+                        </h4>
+                    </div>
+                    <div>
+                        <p>#{cc.attrs.articleObj.text.lead}</p>
+                    </div>
                 </div>
-                <div>
-                    <p>#{cc.attrs.articleObj.text.lead}</p>
-                </div>
-            </div>
-        </div>
+            </h:panelGroup>
 
     </composite:implementation>
 </f:view>

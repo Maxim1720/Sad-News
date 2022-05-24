@@ -44,7 +44,7 @@
                                          action="#{rubricCreateController.create()}"
                                          styleClass="btn btn-primary">
                             <f:param name="categoryId" value="#{param.get('categoryId')}"/>
-                            <f:ajax execute="rubric-name" render="rubrics-group"/>
+<!--                            <f:ajax execute="rubric-name" render="rubrics-group"/>-->
                             <f:setPropertyActionListener target="#{rubricCreateController.creatingEntity.category.id}"
                                                          value="#{rubricGetController.categoryId}"/>
                         </h:commandButton>
