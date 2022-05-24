@@ -8,6 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.entity.article.Article;
 import ru.sad_news.service.facade.article.ArticleFacade;
+import ru.sad_news.service.facade.rubric.RubricFacade;
 import ru.sad_news.web.jsf.controller.CreateController;
 
 @Getter
@@ -25,5 +26,16 @@ public class ArticleCreateController extends CreateController<Article, Long> {
     @Override
     protected void init() {
         setCreatingEntity(new Article());
+    }
+
+
+    @Inject
+    RubricFacade rubricFacade;
+
+    @Override
+    public void create() {
+        Long rubricId = getCreatingEntity().getRubric().getId();
+        getCreatingEntity().setRubric(rubricFacade.findById(rubricId));
+        super.create();
     }
 }

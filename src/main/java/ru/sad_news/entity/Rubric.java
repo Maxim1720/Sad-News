@@ -18,7 +18,7 @@ import java.util.List;
 @Setter
 @Entity
 public class Rubric implements Serializable {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Id
     @Column(name = "id", nullable = false)
     private Long id;

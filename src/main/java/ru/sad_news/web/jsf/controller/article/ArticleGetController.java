@@ -7,7 +7,6 @@ import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.entity.article.Article;
-import ru.sad_news.service.facade.Facade;
 import ru.sad_news.service.facade.article.ArticleFacade;
 import ru.sad_news.service.util.RangeResult;
 import ru.sad_news.web.jsf.controller.GetController;
@@ -34,24 +33,27 @@ public class ArticleGetController extends GetController<Article, Long> {
     private List<Article> allByRubric;
     private Long rubricId;
 
-
     @PostConstruct
     @Override
     protected void init() {
         setSearchEntity(new Article());
         allByRubric = new ArrayList<>();
     }
-
-    public void findAllByRubricId(Long rubricId){
+    public void setAllByRubricId(Long rubricId){
         setRubricId(rubricId);
-        findAllByRubricId();
+        setAllByRubricId();
     }
 
-    public void findAllByRubricId(){
+    public void setAllByRubricId(){
         Logger.getGlobal().log(Level.INFO, "finding all articles by rubric id" + rubricId);
         setAllByRubric(((ArticleFacade) getFacade()).findAllByRubric(rubricId,getRangeResult()));
     }
 
+
+    public List<Article> findAllByRubricId(Long rubricId){
+        setAllByRubricId(rubricId);
+        return allByRubric;
+    }
 
     public String moveToCreate(){
         return "article-create";

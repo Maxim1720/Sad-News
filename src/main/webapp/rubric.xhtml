@@ -10,19 +10,10 @@
     <ui:define name="content">
         <f:view>
 
-           <!-- <f:metadata>
-                <f:viewAction
-                        action="#{rubricGetController.findById(
-                        utils.fromString(param.rubricId))}"/>
-            </f:metadata>-->
-
             <h:panelGroup layout="block">
                 <rubric:byRubric
-                        rubric="#{rubricGetController.findById(utils.fromString(param.get('rubricId')))}"/>
+                        rubric="#{rubricGetController.findById(utils.fromString(param.rubricId))}"/>
             </h:panelGroup>
-
-
-
 
         </f:view>
     </ui:define>
