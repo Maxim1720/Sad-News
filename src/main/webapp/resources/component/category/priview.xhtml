@@ -21,23 +21,26 @@
                         <f:param value="#{cc.attrs.entity.id}" name="categoryId"/>
                     </h:link>
                 </div>
-                <div id="categoryItemButtons" class="d-inline-flex justify-content-between w-100">
 
-                    <h:commandButton action="category-edit"
-                                     value="Edit"
-                                     styleClass="bg-info border-0 border-radius">
-                        <f:setPropertyActionListener
-                                value="#{cc.attrs.entity}"
-                                target="#{categoryEditController.oldEntityValue}"/>
-                    </h:commandButton>
-                    <h:commandButton action="#{categoryRemoveController.removeEntity()}"
-                                                       id="removeBtn"
-                                                       value="Delete" type="submit"
-                                                       styleClass="bg-danger border-radius" style="border:none">
-                    <f:setPropertyActionListener
-                            target="#{categoryRemoveController.removingEntity}"
-                            value="#{cc.attrs.entity}" for="removeBtn"/>
-                </h:commandButton>
+                <div id="categoryItemButtons" class="d-inline-flex justify-content-between w-100">
+                    <h:form>
+                        <h:commandButton action="category-edit"
+                                         value="Edit"
+                                         styleClass="bg-info border-0 border-radius">
+                            <f:setPropertyActionListener
+                                    value="#{cc.attrs.entity}"
+                                    target="#{categoryEditController.oldEntityValue}"/>
+                        </h:commandButton>
+                        <h:commandButton action="#{categoryRemoveController.removeEntity()}"
+                                         id="removeBtn"
+                                         value="Delete" type="submit"
+                                         styleClass="bg-danger border-radius" style="border:none">
+                            <f:setPropertyActionListener
+                                    target="#{categoryRemoveController.removingEntity}"
+                                    value="#{cc.attrs.entity}" for="removeBtn"/>
+                        </h:commandButton>
+                    </h:form>
+
                 </div>
 
 

@@ -13,6 +13,10 @@
     border-radius: 5px;
 }
 
+.item-bg{
+    background-color: #383838;
+}
+
 /*
 #content{
     width: 100%;

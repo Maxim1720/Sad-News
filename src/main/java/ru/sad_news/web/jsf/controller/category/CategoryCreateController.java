@@ -7,7 +7,6 @@ import jakarta.inject.Named;
 import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.entity.Category;
-import ru.sad_news.service.facade.Facade;
 import ru.sad_news.service.facade.category.CategoryFacade;
 import ru.sad_news.web.jsf.controller.CreateController;
 
@@ -24,6 +23,6 @@ public class CategoryCreateController extends CreateController<Category, Long> {
     @PostConstruct
     @Override
     protected void init() {
-        setCreateEntity(new Category());
+        setCreatingEntity(new Category());
     }
 }

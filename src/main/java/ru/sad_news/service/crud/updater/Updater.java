@@ -22,8 +22,9 @@ public abstract class Updater<E, ID> implements Updatable<E,ID>{
     }
 
     public E update(E e, ID id){
-        E e1 = getEntityManager().merge(
-                getEditedEntity(e,getEntityManager().find(getEntityClass(),id))
+        E e1 =
+                getEntityManager().merge(
+                        getEditedEntity(e,getEntityManager().find(getEntityClass(),id))
                 //getEntityManager().find(getEntityClass(),id)
         );
         //em.refresh(getEditedEntity(e,e1));

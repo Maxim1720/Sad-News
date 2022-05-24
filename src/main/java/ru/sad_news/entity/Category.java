@@ -20,7 +20,7 @@ public class Category implements Serializable {
     @Column(length = 50, nullable = false, unique = true)
     private String name;
 
-    @OneToMany(targetEntity = Rubric.class, cascade = {CascadeType.ALL}, mappedBy = "category")
+    @OneToMany(targetEntity = Rubric.class, cascade = {CascadeType.ALL}, mappedBy = "category",fetch = FetchType.EAGER)
     private Set<Rubric> rubrics;
 
     @JsonbTransient

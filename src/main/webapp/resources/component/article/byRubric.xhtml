@@ -18,9 +18,34 @@
    </composite:interface>
 
    <composite:implementation>
-      <ui:repeat value="#{cc.attrs.rubric.articles}" var="a">
-         <article:preview articleObj="#{a}"/>
-      </ui:repeat>
+
+      <h:form>
+      <h:panelGroup layout="block" id="articles">
+         <ui:repeat value="#{cc.attrs.rubric.articles}" var="a">
+
+            <h:panelGroup layout="block" styleClass="border">
+
+                  <article:preview articleObj="#{a}"/>
+                  <h:commandButton value="remove" action="#{articleRemoveController.removeEntity()}"
+                                   styleClass="d-block">
+                     <f:setPropertyActionListener value="#{a}" target="#{articleRemoveController.removingEntity}"/>
+                     <f:param value="#{param.get('rubricId')}" name="rubricId"/>
+                  </h:commandButton>
+
+            </h:panelGroup>
+         </ui:repeat>
+      </h:panelGroup>
+
+      <h:panelGroup layout="block">
+         <h:form>
+            <h:commandButton value="Create" action="#{articleGetController.moveToCreate()}">
+               <f:param value="#{param.rubricId}" name="rubricId"/>
+               <f:ajax render="articles"/>
+            </h:commandButton>
+         </h:form>
+      </h:panelGroup>
+        </h:form>
+
    </composite:implementation>
 
 </f:view>

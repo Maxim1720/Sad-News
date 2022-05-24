@@ -13,21 +13,22 @@
 
     <composite:implementation>
 
-        <div class="container ms-2 me-2 border">
-            <!--<div>
-                <h:graphicImage value="#{cc.attrs.articleObj.articleImgs}"
-                                alt="articleImg+#{cc.attrs.articleObj.id}"/>
-            </div>-->
-            <div>
-                <h3>#{cc.attrs.articleObj.text.title}</h3>
+        <div class="d-inline-flex">
+            <div class="container ms-2 me-2 border item-bg border-dark">
+                <div>
+                    <h3>
+                        <h:link outcome="#{articleController.moveToArticle()}"
+                                styleClass="text-decoration-none text-orange" value=" #{cc.attrs.articleObj.text.title}">
+                            <f:param value="#{cc.attrs.articleObj.id}" name="articleId"/>
+                        </h:link>
+                    </h3>
+                </div>
+                <div>
+                    <p>#{cc.attrs.articleObj.text.lead}</p>
+                </div>
             </div>
-            <div>
-                <p>#{cc.attrs.articleObj.text.lead}</p>
-            </div>
-            <h:button value="Show" outcome="#{articleController.moveToArticle()}" includeViewParams="true">
-                <f:param value="#{cc.attrs.articleObj.id}" name="articleId"/>
-            </h:button>
         </div>
+
     </composite:implementation>
 </f:view>
 

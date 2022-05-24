@@ -51,4 +51,9 @@ public class ArticleGetController extends GetController<Article, Long> {
         Logger.getGlobal().log(Level.INFO, "finding all articles by rubric id" + rubricId);
         setAllByRubric(((ArticleFacade) getFacade()).findAllByRubric(rubricId,getRangeResult()));
     }
+
+
+    public String moveToCreate(){
+        return "article-create";
+    }
 }

@@ -12,20 +12,43 @@
         <f:view>
 
             <f:metadata>
-                <f:viewAction action="#{categoryGetController.findById(utils.fromString(param.categoryId))}"/>
+                <f:viewAction action="#{rubricGetController.findAllByCategoryId(
+                     utils.fromString(param.categoryId))}"/>
+                <!--
+                <f:viewAction
+                        action="#{categoryGetController.findById(utils.fromString(param.categoryId))}"/>-->
             </f:metadata>
 
-            <div>
-                <ui:repeat value="#{categoryGetController.searchEntity.rubrics}" var="r">
-                    <div class="container border">
-                        <h:link value="#{r.name}"
-                                outcome="rubric"
-                                styleClass="text-decoration-none text-orange fs-2">
-                            <f:param name="rubricId" value="#{r.id}"/>
-                        </h:link>
-                    </div>
-                </ui:repeat>
-            </div>
+            <h:form>
+                    <h:panelGroup layout="block" id="rubrics-group">
+                        <ui:repeat value="#{rubricGetController.findAllByCategoryId(utils.fromString(param.get('categoryId')))}" var="r">
+                            <div class="container border">
+                                <h:link value="#{r.name}"
+                                        outcome="#{rubricGetController.moveToRubric()}"
+                                        styleClass="text-decoration-none text-orange fs-2">
+                                    <f:param name="rubricId" value="#{r.id}"/>
+                                </h:link>
+                                <h:commandButton value="remove" action="#{rubricRemoveController.removeEntity()}" styleClass="d-block">
+                                    <f:param name="categoryId" value="#{param.get('categoryId')}"/>
+                                    <f:setPropertyActionListener value="#{r}" target="#{rubricRemoveController.removingEntity}"/>
+                                </h:commandButton>
+                            </div>
+                        </ui:repeat>
+                    </h:panelGroup>
+
+                <h:outputLabel for="rubric-name" id="create-rubric-label" value="Create rubric"/>
+                <h:inputText id="rubric-name"
+                                     value="#{rubricCreateController.creatingEntity.name}"/>
+
+                        <h:commandButton value="create"
+                                         action="#{rubricCreateController.create()}"
+                                         styleClass="btn btn-primary">
+                            <f:param name="categoryId" value="#{param.get('categoryId')}"/>
+                            <f:ajax execute="rubric-name" render="rubrics-group"/>
+                            <f:setPropertyActionListener target="#{rubricCreateController.creatingEntity.category.id}"
+                                                         value="#{rubricGetController.categoryId}"/>
+                        </h:commandButton>
+            </h:form>
 
         </f:view>
     </ui:define>

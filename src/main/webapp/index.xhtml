@@ -19,7 +19,7 @@
             <ui:define name="content">
                 <f:view>
                     <f:metadata>
-                        <f:viewAction action="#{articleGetController.findAll()}"/>
+                        <f:viewAction action="#{articleGetController.setAllEntities()}"/>
                     </f:metadata>
 
                     <!--<div class="d-inline-block">
@@ -37,7 +37,9 @@
 
                     <div class="d-inline-flex flex-wrap">
                         <ui:repeat value="#{articleGetController.all}" var="a">
-                            <article:preview articleObj="#{a}"/>
+                            <div class="d-inline-flex flex-wrap">
+                                <article:preview articleObj="#{a}"/>
+                            </div>
                         </ui:repeat>
                     </div>
                 </f:view>

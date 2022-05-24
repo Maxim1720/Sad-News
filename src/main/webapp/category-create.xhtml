@@ -34,7 +34,7 @@
             <h:inputText id="category_name_input"
                          required="true"
                          maxlength="50"
-                         value="#{categoryCreateController.createEntity.name}">
+                         value="#{categoryCreateController.creatingEntity.name}">
                 <f:validateLength for="category_name_input"
                                   maximum="50" minimum="2"/>
                 <f:validateRegex  for="category_name_input"

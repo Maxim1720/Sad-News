@@ -1,6 +1,5 @@
 package ru.sad_news.web.jsf.controller;
 
-import jakarta.faces.context.FacesContext;
 import lombok.Getter;
 import lombok.Setter;
 import ru.sad_news.service.facade.Facade;
@@ -26,20 +25,25 @@ public abstract class GetController<E, ID> implements Serializable {
 
     protected abstract void init();
 
-
     public E findById(ID id){
-        searchId = id;
+        setSearchId(id);
+        setById();
+        return getSearchEntity();
+    }
+
+    public void setById(){
         Logger.getGlobal().log(Level.WARNING, searchId.toString() + " searching");
         searchEntity = facade.findById(searchId);
-        return searchEntity;
     }
 
-    public void findById(){
-        Logger.getGlobal().log(Level.WARNING, searchId.toString() + " searched");
-        searchEntity = facade.findById(searchId);
-    }
-
-    public void findAll(){
+    public void setAllEntities(){
+        Logger.getGlobal().log(Level.WARNING, "all searching: ");
         all = facade.findAll(new RangeResult(0,150));
+        Logger.getGlobal().log(Level.WARNING, "all searched, size: "+ all.size());
+    }
+
+    public List<E> findAll(){
+        setAllEntities();
+        return all;
     }
 }

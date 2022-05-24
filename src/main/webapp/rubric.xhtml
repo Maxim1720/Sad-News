@@ -9,15 +9,20 @@
 <ui:composition template="jsf/templates/templLayout.xhtml">
     <ui:define name="content">
         <f:view>
-            <f:metadata>
 
+           <!-- <f:metadata>
                 <f:viewAction
                         action="#{rubricGetController.findById(
                         utils.fromString(param.rubricId))}"/>
-            </f:metadata>
-            <div>
-                <rubric:byRubric rubric="#{rubricGetController.searchEntity}"/>
-            </div>
+            </f:metadata>-->
+
+            <h:panelGroup layout="block">
+                <rubric:byRubric
+                        rubric="#{rubricGetController.findById(utils.fromString(param.get('rubricId')))}"/>
+            </h:panelGroup>
+
+
+
 
         </f:view>
     </ui:define>
